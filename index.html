@@ -197,101 +197,31 @@
 </section>
 
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Performance</h2>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Performance</h2>
+        <p>Comparisons between <b>SciMult</b> and state-of-the-art scientific pre-trained language models (e.g., <b>SciBERT</b>, <b>PubMedBERT</b>, <b>SPECTER</b>, <b>SciNCL</b>, and <b>SPECTER 2.0</b>) in each task.</p>
 
-      <div class="content has-text-justified">
-        <p>
-          We collect <span style="color: red;"><b>QA-Feeback</b></span>, a dataset of long-form question answering, with human preferences and fine-grained feedback.
-          QA-Feedback is based on ASQA, a dataset that focuses on answering ambiguous factoid questions.
-        </p>
-        <p>
-          There are three types of fine-grained human feedback, and we train a fine-grained reward model for each of them:
-        </p>
-        <p>
-          <span class="err1marker">C1: irrelevance, repetition, and incoherence (rel.)</span>; The reward model has the density level of sub-sentences; i.e., returns a score for each sub-sentence. 
-          If the sub-sentence is irrelevant, repetitive, or incoherent, the reward is -1; otherwise, the reward is +1.
-        </p>
-        <p>
-          <span class="err2marker">C2: incorrect or unverifiable facts (fact.)</span>; The reward model has the density level of sentences; i.e., returns a score for each sentence.
-          If the sentence has any factual error, the reward is -1; otherwise, the reward is +1.
-        </p>
-        <p>
-          <span class="err3marker">C3: incomplete information (comp.)</span>; The reward model checks if the response is complete and covers all the information in the reference passages that are related to the question.
-          This reward model gives one reward for the whole response. 
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Fine-Grained Human Evaluation</h2>
-
-      <div class="content has-text-justified">
-      
-      <p>We compare our <b>Fine-Grained RLHF</b> with the following baselines:</p>
-        <p><b>SFT</b>: The supervised finetuning model (trained on 1K training examples) that is used as the initial policy for our RLHF experiments.</p>
-        <p><b>Pref. RLHF</b>: The baseline RLHF model that uses holistic reward.</p>  
-        <p><b>SFT-Full</b>: We finetune LM with human-written responses (provided by ASQA) of all training examples and denote this model as SFT-Full. Notice that each gold response takes 15 min to annotate (according to ASQA), 
-      which takes much longer time than our feedback annotation (6 min).</p>
-        </p>
-      </div>
-
-
-      <img src="static/images/human_eval.png" style="width:100%;">
-      <div class="content has-text-justified">
-        <p> 
-          Human evaluation shows that our <b>Fine-Grained RLHF</b> outperforms SFT and Preference RLHF on all error types. 
-          Also, RLHF (both preference-based and fine-grained) are particularly effective in reducing factual errors.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Customize LM behaviors</h2>
-      <img src="static/images/customization.png" style="width:100%;">
-      <div class="content has-text-justified">
-        By changing the weight of the <span class="err1marker"><b>Relevance reward model</b></span>, and keeping the weight of the other two reward models fixed,
-        we can customize how detailed and lengthy the LM responses would be.
-        Here we compare the outputs of three LMs, trained with different reward model combinations.
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/1_class_fine.png" alt="fine-grained paper classification" width="70%"/>
+              <p><b>Fine-Grained Paper Classification</b></p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/1_class_fine.png" alt="fine-grained paper classification" width="70%"/>
+              <p><b>Fine-Grained Paper Classification</b></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Fine-Grained reward models both complement and compete with each other</h2>
-      <img src="static/images/analysis.png" style="width:100%;">
-      <br><br>
-      <div class="content has-text-justified">
-        We find that there is a trade-off between the three reward models. 
-        <span class="err1marker"><b>Relevance RM</b></span> prefers shorter and more concise responses, while <span class="err3marker"><b>Info Completeness RM</b></span> prefers longer and more informative responses.
-        Thus, these two rewards compete against each other during training and eventually reach a balance.
-        Meanwhile, <span class="err2marker"><b>Factuality RM</b></span> continuously improves the factual correctness of the response.
-        Finally, removing any one of the reward models will degrade the performance.
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
 
 
 <section class="section is-light" id="BibTeX">
