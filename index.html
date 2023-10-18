@@ -147,9 +147,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img src="./static/images/teaser.png" alt="tifa teaser">
-            <h2 class="subtitle">
-              We propose a task-aware specialization strategy, inpired by <b>the Mixture-of-Experts Transformer</b> architecture, to pre-train a scientific language model <b>SciMult</b> via contrastive multi-task learning. SciMult can be used for various scientific literature understanding tasks, including coarse-grained/fine-grained paper classification, citation prediction, literature retrieval, paper recommendation, patient-to-article matching, and so on.
-            </h2>
+            <p>
+              We propose a task-aware specialization strategy, inpired by <b>the Mixture-of-Experts Transformer</b> architecture, to pre-train a scientific language model <b>SciMult</b> via contrastive multi-task learning. SciMult can be used for various scientific literature understanding tasks, including coarse-grained/ fine-grained paper classification, citation prediction, literature retrieval, paper recommendation, patient-to-article matching, and so on.
+            </p>
 
     </div>
   </div>
@@ -158,38 +158,17 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">What are Fine-Grained Rewards?</h2>
+      <h2 class="title is-3">Introduction</h2>
       <div class="content has-text-justified">
         <br>
         <p>
-          Prior work in RLHF focused on collecting human preferences regarding the overall quality of language model
-          (LM) outputs. However, this type of holistic feedback
-          offers limited information.
-          In our paper, we introduce <span style="color: red;"><b>fine-grained human feedback</b></span> (e.g.,
-          which sub-sentence is irrelevant, which sentence is not truthful, which sentence is toxic) as an explicit training signal.
+          Scientific literature understanding plays a pivotal role in uncovering knowledge structures that facilitate scientific discovery. Recent studies highlight the effectiveness of pre-trained language models in scientific literature understanding tasks, especially when tuned through contrastive learning. However, there is a gap in jointly utilizing data across different tasks for language model pre-training.
         </p>
         <p>
-          Our rewards are fine-grained in two aspects:
+          While multi-task learning is promising for improved parameter efficiency, sharing all parameters across tasks leads to undesirable task interference. To address this problem, we consider <b>the Mixture-of-Experts Transformer</b> architecture, which modifies the Transformer block in the language model to have multiple parallel sub-layers, each of which is dedicated for one task. When performing different tasks, the input will be routed to different sub-layers based on task types.
         </p>
         <p>
-          <span style="color: red;"><b>(a) Density</b></span>: We provide a reward after each segment (e.g., a sentence)
-          is
-          generated, similar to OpenAI's "step-by-step process reward". We found that this approach is more informative than
-          holistic
-          feedback and, thus, more effective for RL.
-        </p>
-
-        <p>
-          <span style="color: red;"><b>(b) Multiple reward models associated with different feedback types</b></span>:
-          We employ
-          multiple reward models to capture different types of feedback (e.g., factual inaccuracy, irrelevance, and
-          information incompleteness).
-          Interestingly, we observed that these reward models both complement and compete with each other. By adjusting
-          the
-          weights of the reward models, we can control the balance between the different types of feedback and <span
-            style="color: red;"><b>tailor the LM for different tasks</b></span> according to specific needs.
-          For instance, some users may prefer short and concise outputs, while others may seek longer and more detailed
-          responses.
+          We conduct a comprehensive empirical study using datasets from multiple sources (e.g., <b>MAPLE</b>, <b>SciDocs</b>, <b>SciRepEval</b>, <b>BEIR</b>, and <b>PMC-Patients</b>) for evaluating various scientific literature understanding tasks. For each task, models will be tested on not only <b>in-domain</b> but also <b>cross-domain</b> evaluation datasets. Specifically, for extreme multi-label text classification, models trained on computer science and biomedicine papers will be tested in the geography and psychology fields; for link prediction, models trained on citation signals need to be evaluated on patient-to-patient matching and paper recommendation; for literature retrieval, models will be tested on datasets specific to COVID-19 or related to claim verification which are not seen during pre-training. Experimental results show that SciMult <b>outperforms competitive scientific pre-trained language models on most datasets</b> and <b>achieves the new state-of-the-art performance on the PMC-Patients leaderboard</b>.
         </p>
       </div>
     </div>
