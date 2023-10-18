@@ -148,7 +148,7 @@
     <div class="hero-body">
       <img src="./static/images/teaser.png" alt="tifa teaser">
             <p>
-              We propose a task-aware specialization strategy, inpired by <b>the Mixture-of-Experts Transformer</b> architecture, to pre-train a scientific language model <b>SciMult</b> via contrastive multi-task learning. SciMult can be used for various scientific literature understanding tasks, including coarse-grained/ fine-grained paper classification, citation prediction, literature retrieval, paper recommendation, patient-to-article matching, and so on.
+              We propose a task-aware specialization strategy, inpired by <b>the Mixture-of-Experts Transformer</b> architecture, to pre-train a scientific language model <b>SciMult</b> via contrastive multi-task learning. SciMult can be used for various scientific literature understanding tasks, including <b>coarse-grained/fine-grained paper classification</b>, <b>citation prediction</b>, <b>literature retrieval</b>, <b>paper recommendation</b>, <b>patient-to-article matching</b>, and so on.
             </p>
 
     </div>
@@ -168,7 +168,7 @@
           While multi-task learning is promising for improved parameter efficiency, sharing all parameters across tasks leads to undesirable task interference. To address this problem, we consider <b>the Mixture-of-Experts Transformer</b> architecture, which modifies the Transformer block in the language model to have multiple parallel sub-layers, each of which is dedicated for one task. When performing different tasks, the input will be routed to different sub-layers based on task types.
         </p>
         <p>
-          We conduct a comprehensive empirical study using datasets from multiple sources (e.g., <b>MAPLE</b>, <b>SciDocs</b>, <b>SciRepEval</b>, <b>BEIR</b>, and <b>PMC-Patients</b>) for evaluating various scientific literature understanding tasks. For each task, models will be tested on not only <b>in-domain</b> but also <b>cross-domain</b> evaluation datasets. Specifically, for extreme multi-label text classification, models trained on computer science and biomedicine papers will be tested in the geography and psychology fields; for link prediction, models trained on citation signals need to be evaluated on patient-to-patient matching and paper recommendation; for literature retrieval, models will be tested on datasets specific to COVID-19 or related to claim verification which are not seen during pre-training. Experimental results show that SciMult <b>outperforms competitive scientific pre-trained language models on most datasets</b> and <b>achieves the new state-of-the-art performance on the PMC-Patients leaderboard</b>.
+          We conduct a comprehensive empirical study using datasets from multiple sources (e.g., <b>MAPLE</b>, <b>SciDocs</b>, <b>SciRepEval</b>, <b>BEIR</b>, and <b>PMC-Patients</b>) for evaluating various scientific literature understanding tasks. For each task, models will be tested on not only <b>in-domain</b> but also <b>cross-domain</b> evaluation datasets. Specifically, for extreme multi-label text classification, models trained on computer science and biomedicine papers will be tested in the geography and psychology fields; for link prediction, models trained on citation signals need to be evaluated on patient-to-patient matching and paper recommendation; for literature retrieval, models will be tested on datasets specific to COVID-19 or related to claim verification which are not seen during pre-training. <b>Experimental results show that SciMult outperforms competitive scientific pre-trained language models on most datasets and achieves the new state-of-the-art performance on the PMC-Patients leaderboard.</b>
         </p>
       </div>
     </div>
@@ -178,83 +178,20 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Updates</h2>
-      <div class="content has-text-justified">
-        <p>
-          <b>2023/07/04</b> Our codebase, FineGrainedRLHF, is released!<br>
-          <b>2023/06/05</b> QA-Feedback, our long-form QA dataset with human preferences + fine-grained feedback, is
-          released!<br>
-          <b>2023/06/05</b> Paper is released!<br>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          Language models (LMs) often exhibit undesirable text generation behaviors, including generating false, toxic, or
-          irrelevant outputs. Reinforcement learning from human feedback (RLHF)—where human preference judgments on LM outputs are
-          transformed into a learning signal—has recently shown promise in addressing these issues. 
-          However, such holistic
-          feedback conveys limited information on long text outputs; it does not indicate which aspects of the outputs influenced
-          user preference; e.g., which parts contain what type(s) of errors. In this paper, we use fine-grained human feedback
-          (e.g., which sentence is false, which sub-sentence is irrelevant) as an explicit training signal. We introduce
-          FINE-GRAINED RLHF, a framework that enables training and learning from reward functions that are fine-grained in two
-          respects: (1) density, providing a reward after every segment (e.g., a sentence) is generated; and (2) incorporating
-          multiple reward models associated with different feedback types (e.g., factual incorrectness, irrelevance, and
-          information incompleteness). We conduct experiments on detoxification and long-form question answering to illustrate how
-          learning with such reward functions leads to improved performance, supported by both automatic and human evaluation.
-          Additionally, we show that LM behaviors can be customized using different combinations of fine-grained reward models.
-          
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Task 1: Detoxification</h2>
+      <h2 class="title is-3">Evaluation Datasets</h2>
 
       <div class="content has-text-justified">
         <p>
-          The task of detoxification aims to reduce the toxicity in the model generation. We use Perspective API to measure toxicity. It returns a toxicity value between 0 (not toxic) and 1
-          (toxic).
-
+          The preprocessed evaluation datasets can be downloaded from <a href="https://drive.google.com/file/d/1hoUAInDVO_UYnQiOOoVuBjwnVgY0BosO/view?usp=drive_link" target="_blank">here</a>.
         </p>
       </div>
-
-
-      <img src="static/images/toxicity_demo.png" style="width:60%;">
+      <img src="static/images/dataset.png" style="width:90%;">
       <div class="content has-text-justified">
         <p>
-          We compare two kinds of rewards:
+          <b>Disclaimer:</b> The aggregate version is released under the ODC-By v1.0 License. By downloading this version you acknowledge that you have read and agreed to all the terms in this license. Similar to Tensorflow datasets or Hugging Face's datasets library, we just downloaded and prepared public datasets. We only distribute these datasets in a specific format, but we do not vouch for their quality or fairness, or claim that you have the license to use the dataset. It remains the user's responsibility to determine whether you as a user have permission to use the dataset under the dataset's license and to cite the right owner of the dataset.
         </p>
         <p>
-          (a) <b>Holistic Rewards for (non-)Toxicity</b>: We use 1-Perspective(y) as the reward
-        </p>
-          <p>
-          (b) <b>Sentence-level (Fine-Grained) Rewards for (non-)Toxicity</b>: We query the API after the model generates each sentence instead of generating the full sequence. For each generated
-          sentence, we use -&Delta;(Perspective(y)) as the reward for the sentence (i.e. how much toxicity is changed from generating the current sentence).
-          </p>
-      </div>
-      <img src="static/images/toxicity_results.png" style="width:100%;">
-      <br><br>
-      <div class="content has-text-justified">
-        <p>
-          Table 1 shows that Our Fine-Grained RLHF with sentence-level
-          fine-grained reward attains the lowest toxicity and perplexity among all methods, while maintaining
-          a similar level of diversity. Figure 2 shows that learning from denser fine-grained reward is more <b>sample
-            efficient</b> than holistic reward. One explanation is that fine-grained reward locates where the toxic content is, which is a
-          stronger training signal compared with a scalar reward for the whole text.
+          More details about each constituent dataset can be found in our <a href="https://github.com/yuzhimanhua/SciMult#datasets" target="_blank">GitHub repository</a>.
         </p>
       </div>
 
